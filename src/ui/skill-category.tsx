@@ -23,7 +23,7 @@ export default function SkillCategory({
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       viewport={{ once: true, margin: "0px 0px -50px 0px" }}
-      className="dark:bg-gray-900/80 bg-white/80 backdrop-blur-sm dark:border-gray-800 border-gray-200 rounded-xl p-4 sm:p-5 hover:dark:border-gray-700 hover:border-gray-300 transition-all shadow-sm"
+      className="card"
     >
       <div className="flex items-center gap-3 mb-3 sm:mb-4">
         <div className="w-8 h-8 sm:w-10 sm:h-10 dark:bg-blue-900/20 bg-blue-100/50 rounded-lg flex items-center justify-center text-blue-600 dark:text-blue-400">
@@ -38,7 +38,7 @@ export default function SkillCategory({
         {category.items.map((skill, i) => (
           <li key={i} className="flex items-center">
             <div className="w-2 h-2 bg-blue-600 dark:bg-blue-500 rounded-full mr-2 sm:mr-3"></div>
-            <span className="dark:text-gray-300 text-gray-700 text-xs sm:text-sm">
+            <span className="dark:text-gray-300 text-gray-700 text-sm sm:text-base">
               {skill}
             </span>
           </li>

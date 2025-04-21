@@ -65,8 +65,7 @@ export default function ContactSection() {
         <p className="dark:text-gray-400 text-gray-600 text-sm sm:text-base mb-6 sm:mb-8 text-center">
           Have a project in mind or want to discuss backend architecture?
         </p>
-
-        <div className="dark:bg-gray-900 bg-white rounded-lg dark:border-gray-800 border-gray-200 p-4 sm:p-6 shadow-sm">
+        <div className="card">
           <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -80,7 +79,6 @@ export default function ContactSection() {
                 onChange={(e) =>
                   setFormData({ ...formData, name: e.target.value })
                 }
-                className="w-full pl-9 sm:pl-10 pr-3 sm:pr-4 py-2 sm:py-3 dark:bg-gray-800 bg-gray-50 dark:border-gray-700 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-sm sm:text-base dark:text-white text-gray-900"
                 placeholder="Your Name"
                 required
               />
@@ -98,7 +96,6 @@ export default function ContactSection() {
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
                 }
-                className="w-full pl-9 sm:pl-10 pr-3 sm:pr-4 py-2 sm:py-3 dark:bg-gray-800 bg-gray-50 dark:border-gray-700 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-sm sm:text-base dark:text-white text-gray-900"
                 placeholder="your.email@example.com"
                 required
               />
@@ -116,7 +113,6 @@ export default function ContactSection() {
                 onChange={(e) =>
                   setFormData({ ...formData, message: e.target.value })
                 }
-                className="w-full pl-9 sm:pl-10 pr-3 sm:pr-4 py-2 sm:py-3 dark:bg-gray-800 bg-gray-50 dark:border-gray-700 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-sm sm:text-base dark:text-white text-gray-900"
                 placeholder="Your message..."
                 required
               ></textarea>
@@ -166,10 +162,7 @@ export default function ContactSection() {
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
               {/* Email */}
-              <a
-                href="mailto:yonaskemon01@gmail.com"
-                className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 dark:bg-gray-800 bg-gray-50 hover:dark:bg-gray-700 hover:bg-gray-100 rounded-lg transition-colors text-xs sm:text-sm"
-              >
+              <a href="mailto:yonaskemon01@gmail.com" className="connect-icons">
                 <span className="w-8 h-8 sm:w-10 sm:h-10 dark:bg-gray-700 bg-gray-200 rounded-full flex items-center justify-center flex-shrink-0">
                   <FiMail className="w-3 h-3 sm:w-4 sm:h-4 text-blue-600 dark:text-blue-400" />
                 </span>
@@ -181,7 +174,7 @@ export default function ContactSection() {
                 href="https://t.me/yquest"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 dark:bg-gray-800 bg-gray-50 hover:dark:bg-gray-700 hover:bg-gray-100 rounded-lg transition-colors text-xs sm:text-sm"
+                className="connect-icons"
               >
                 <span className="w-8 h-8 sm:w-10 sm:h-10 dark:bg-blue-500/10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
                   <FaTelegram className="w-3 h-3 sm:w-4 sm:h-4 text-blue-600 dark:text-blue-400" />
@@ -196,7 +189,7 @@ export default function ContactSection() {
                 href="https://wa.me/251953136922"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 dark:bg-gray-800 bg-gray-50 hover:dark:bg-gray-700 hover:bg-gray-100 rounded-lg transition-colors text-xs sm:text-sm"
+                className="connect-icons"
               >
                 <span className="w-8 h-8 sm:w-10 sm:h-10 dark:bg-green-500/10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
                   <FaWhatsapp className="w-3 h-3 sm:w-4 sm:h-4 text-green-600 dark:text-green-400" />
@@ -207,10 +200,7 @@ export default function ContactSection() {
               </a>
 
               {/* Phone */}
-              <a
-                href="tel:+251953136922"
-                className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 dark:bg-gray-800 bg-gray-50 hover:dark:bg-gray-700 hover:bg-gray-100 rounded-lg transition-colors text-xs sm:text-sm"
-              >
+              <a href="tel:+251953136922" className="connect-icons">
                 <span className="w-8 h-8 sm:w-10 sm:h-10 dark:bg-purple-500/10 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
                   <FiPhone className="w-3 h-3 sm:w-4 sm:h-4 text-purple-600 dark:text-purple-400" />
                 </span>

@@ -28,19 +28,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${inter.variable} ${spaceGrotesk.variable} text-gray-900 bg-white dark:bg-gray-900 dark:text-gray-100`}
-      >
+      <body className={`${inter.variable} ${spaceGrotesk.variable}`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark" // Default theme if no preference exists
-          enableSystem={false} // Disable system preference
-          storageKey="theme" // Unique key for your app
-          enableColorScheme={false} // Disable color-scheme CSS property
+          defaultTheme="dark"
+          enableSystem={false}
+          storageKey="theme"
+          enableColorScheme={false}
         >
-          <Navbar />
-          {children}
-          <Footer />
+          <div className="bg-active-background transition-all ease-in duration-500">
+            <Navbar />
+            {children}
+            <Footer />
+          </div>
         </ThemeProvider>
       </body>
     </html>

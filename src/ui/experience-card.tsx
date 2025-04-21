@@ -28,13 +28,13 @@ export default function ExperienceCard({
     >
       <div className="hidden lg:flex w-1/2"></div>
 
-      <div className="z-10 hidden lg:flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-blue-600 border-4 dark:border-gray-950 border-gray-100 mx-auto">
+      <div className="z-10 hidden lg:flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gray-700 border-4 dark:border-gray-950 border-gray-100 mx-auto">
         <div className="w-2 h-2 bg-white rounded-full"></div>
       </div>
       <div
         className={`w-full lg:w-1/2 ${index % 2 === 0 ? "lg:pr-6" : "lg:pl-6"}`}
       >
-        <div className="dark:bg-gray-900/80 bg-white/80 backdrop-blur-sm dark:border-gray-800 border-gray-200 rounded-xl p-4 sm:p-5 md:p-6 hover:dark:border-gray-700 hover:border-gray-300 transition-all shadow-sm">
+        <div className="card">
           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 mb-2">
             <h3 className="text-base sm:text-lg font-bold dark:text-white text-gray-900">
               {experience.role}
@@ -47,7 +47,7 @@ export default function ExperienceCard({
             {experience.company}
           </h4>
 
-          <ul className="space-y-2 dark:text-gray-400 text-gray-600 text-xs sm:text-sm mb-3 sm:mb-4">
+          <ul className="space-y-2 dark:text-gray-400 text-gray-700 text-sm sm:text-base mb-3 sm:mb-4">
             {experience.responsibilities.map((item, i) => (
               <li key={i} className="flex">
                 <span className="mr-2 mt-1 text-blue-600 dark:text-blue-400">

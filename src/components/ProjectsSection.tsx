@@ -28,14 +28,14 @@ export default function ProjectsSection() {
         </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 md:gap-6">
         {projects.map((project, index) => (
           <ProjectCard key={index} project={project} index={index} />
         ))}
       </div>
 
       <div className="mt-12 md:mt-16 pt-8 md:pt-12 border-t dark:border-gray-800 border-gray-200">
-        <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4 text-center">
+        <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4 text-center text-gray-800 dark:text-white">
           <span className="text-blue-600 dark:text-blue-400">
             Backend-Centric
           </span>{" "}
@@ -45,7 +45,7 @@ export default function ProjectsSection() {
           These highlight my deep expertise in distributed systems and cloud
           architecture
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 md:gap-6">
           {backendProjects.map((project, index) => (
             <ProjectCard
               key={`backend-${index}`}

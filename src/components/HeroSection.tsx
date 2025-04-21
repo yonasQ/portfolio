@@ -66,7 +66,7 @@ export default function HeroSection() {
                   });
                 }
               }}
-              className="px-6 py-3 bg-gradient-to-r from-gray-800 to-blue-600 dark:from-white dark:to-blue-400 rounded-lg font-medium hover:opacity-90 transition-opacity cursor-pointer text-white dark:text-black shadow-md"
+              className="px-6 py-3 bg-gradient-to-r from-gray-800 to-blue-600 dark:from-white dark:to-blue-400 rounded-lg font-medium hover:opacity-90  cursor-pointer text-white dark:text-black shadow-md"
             >
               View Projects
             </a>
@@ -93,7 +93,7 @@ export default function HeroSection() {
               whileTap={{ scale: 0.9 }}
               href="https://github.com/yourusername"
               target="_blank"
-              className="p-3 bg-gray-800 text-white rounded-full shadow-md hover:bg-gray-700 transition-all"
+              className="p-3 bg-gray-800 text-white rounded-full shadow-md hover:bg-gray-700  "
               aria-label="GitHub"
             >
               <FiGithub className="w-5 h-5" />
@@ -103,7 +103,7 @@ export default function HeroSection() {
               whileTap={{ scale: 0.9 }}
               href="https://linkedin.com/in/yonas-kemon"
               target="_blank"
-              className="p-3 bg-blue-600 text-white rounded-full shadow-md hover:bg-blue-700 transition-all"
+              className="p-3 bg-blue-600 text-white rounded-full shadow-md hover:bg-blue-700  "
               aria-label="LinkedIn"
             >
               <FiLinkedin className="w-5 h-5" />
@@ -112,7 +112,7 @@ export default function HeroSection() {
               whileHover={{ y: -3, scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               href="mailto:yonaskemon01@gmail.com"
-              className="p-3 bg-red-500 text-white rounded-full shadow-md hover:bg-red-600 transition-all"
+              className="p-3 bg-red-500 text-white rounded-full shadow-md hover:bg-red-600  "
               aria-label="Email"
             >
               <FiMail className="w-5 h-5" />
@@ -122,7 +122,7 @@ export default function HeroSection() {
               whileTap={{ scale: 0.9 }}
               href="/resume.pdf"
               download
-              className="p-3 bg-purple-600 text-white rounded-full shadow-md hover:bg-purple-700 transition-all"
+              className="p-3 bg-purple-600 text-white rounded-full shadow-md hover:bg-purple-700  "
               aria-label="Download Resume"
             >
               <FiDownload className="w-5 h-5" />

@@ -32,7 +32,7 @@ export default function ExperienceSection() {
       </motion.div>
 
       <div className="relative">
-        <div className="hidden lg:block absolute left-4 h-full w-0.5 bg-gradient-to-b dark:from-gray-800 from-gray-200 to-transparent lg:left-1/2 lg:-ml-0.5"></div>
+        <div className="hidden lg:block absolute left-4 h-full w-0.5 bg-gradient-to-b dark:from-gray-700 from-gray-500 to-transparent lg:left-1/2 lg:-ml-0.5"></div>
 
         <div className="space-y-8 sm:space-y-10 md:space-y-12">
           {experiences.map((exp, index) => (

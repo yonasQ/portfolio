@@ -3,14 +3,14 @@ import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 
 export default function Footer() {
   return (
-    <footer className="dark:bg-gray-950 bg-white border-t border-border-color py-8 sm:py-12 transition-colors duration-300">
+    <footer className="border-t border-border-color py-8 sm:py-12">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 sm:gap-8">
           {/* Branding section */}
           <div className="text-center md:text-left">
             <Link
               href="/"
-              className="text-lg sm:text-xl font-bold dark:text-white text-gray-900 hover:dark:text-blue-400 hover:text-blue-600 transition-colors"
+              className="text-lg sm:text-xl font-bold dark:text-white text-gray-900 hover:dark:text-blue-400 hover:text-blue-600  "
             >
               Yonas<span className="text-blue-600 dark:text-blue-400">.</span>
             </Link>
@@ -26,7 +26,7 @@ export default function Footer() {
                 href="https://github.com/yourusername"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="dark:text-gray-400 text-gray-600 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                className="dark:text-gray-400 text-gray-600 hover:text-blue-600 dark:hover:text-blue-400  "
                 aria-label="GitHub"
               >
                 <FiGithub className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -35,14 +35,14 @@ export default function Footer() {
                 href="https://linkedin.com/in/yonas-kemon"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="dark:text-gray-400 text-gray-600 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                className="dark:text-gray-400 text-gray-600 hover:text-blue-600 dark:hover:text-blue-400  "
                 aria-label="LinkedIn"
               >
                 <FiLinkedin className="w-5 h-5 sm:w-6 sm:h-6" />
               </a>
               <a
                 href="mailto:yonaskemon01@gmail.com"
-                className="dark:text-gray-400 text-gray-600 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                className="dark:text-gray-400 text-gray-600 hover:text-blue-600 dark:hover:text-blue-400  "
                 aria-label="Email"
               >
                 <FiMail className="w-5 h-5 sm:w-6 sm:h-6" />

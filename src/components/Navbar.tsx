@@ -57,9 +57,9 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all ${
-        scrolled ? "bg-active-background/90" : "bg-active-background"
-      }  border-b border-border-color  backdrop-blur-md shadow-sm`}
+      className={`fixed top-0 left-0 right-0 z-50 ${
+        scrolled ? "backdrop-blur-md shadow-lg" : "border-b border-border-color"
+      } `}
     >
       <div className="container mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16">
@@ -70,7 +70,7 @@ export default function Navbar() {
             onClick={() => scrollToSection("home")}
             className="text-lg sm:text-xl font-bold flex items-center focus:outline-none cursor-pointer dark:text-white text-gray-900"
           >
-            <span className="bg-blue-600 w-5 h-5 sm:w-6 sm:h-6 rounded-full mr-2 flex items-center justify-center">
+            <span className="bg-gray-700 w-5 h-5 sm:w-6 sm:h-6 rounded-full mr-2 flex items-center justify-center">
               <span className="w-2 h-2 bg-white rounded-full"></span>
             </span>
             Yonas<span className="text-blue-500">.</span>
@@ -84,7 +84,7 @@ export default function Navbar() {
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => scrollToSection(section.id)}
-                className={`relative px-1 py-2 text-sm font-medium cursor-pointer transition-colors duration-200 ${
+                className={`relative px-1 py-2 text-sm font-medium cursor-pointer ${
                   activeSection === section.id
                     ? "text-blue-600 dark:text-blue-400"
                     : "dark:text-gray-400 text-gray-600 hover:text-gray-900 dark:hover:text-white"
@@ -105,7 +105,7 @@ export default function Navbar() {
           {/* Right side controls */}
           <div className="flex items-center gap-3 sm:gap-4">
             {/* Social Icons (Desktop) */}
-            <div className="hidden lg:flex items-center gap-2">
+            <div className="hidden lg:flex items-center gap-1 sm:gap-2">
               <SocialMedias />
             </div>
 
@@ -140,7 +140,7 @@ export default function Navbar() {
                   key={section.id}
                   whileHover={{ x: 4 }}
                   onClick={() => scrollToSection(section.id)}
-                  className={`px-4 py-3 rounded-lg text-left cursor-pointer transition-colors duration-200 ${
+                  className={`px-4 py-3 rounded-lg text-left cursor-pointer ${
                     activeSection === section.id
                       ? "dark:bg-blue-900/30 bg-blue-100 text-blue-600 dark:text-blue-400 font-medium"
                       : "dark:text-gray-400 text-gray-600 hover:dark:bg-gray-800 hover:bg-gray-100"
@@ -169,10 +169,10 @@ const SocialMedias = () => {
         href="https://github.com/yourusername"
         target="_blank"
         rel="noopener noreferrer"
-        className="p-2 dark:bg-gray-800 bg-gray-100 rounded-full text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400"
+        className="p-1.5 sm:p-2 dark:bg-gray-800 bg-gray-100 rounded-full text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400"
         aria-label="GitHub"
       >
-        <FiGithub className="w-5 h-5" />
+        <FiGithub className="w-4 h-4 sm:w-5 sm:h-5" />
       </motion.a>
       <motion.a
         whileHover={{ y: -3, scale: 1.1 }}
@@ -180,41 +180,41 @@ const SocialMedias = () => {
         href="https://linkedin.com/in/yonas-kemon"
         target="_blank"
         rel="noopener noreferrer"
-        className="p-2 dark:bg-gray-800 bg-gray-100 rounded-full text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400"
+        className="p-1.5 sm:p-2 dark:bg-gray-800 bg-gray-100 rounded-full text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400"
         aria-label="LinkedIn"
       >
-        <FiLinkedin className="w-5 h-5" />
+        <FiLinkedin className="w-4 h-4 sm:w-5 sm:h-5" />
       </motion.a>
       <motion.a
         whileHover={{ y: -3, scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        href="mailto:you@example.com"
-        className="p-2 dark:bg-gray-800 bg-gray-100 rounded-full text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400"
+        href="mailto:yonaskemon01@gmail.com"
+        className="p-1.5 sm:p-2 dark:bg-gray-800 bg-gray-100 rounded-full text-gray-600 dark:text-gray-400 hover:text-red-500 dark:hover:text-red-400"
         aria-label="Email"
       >
-        <FiMail className="w-5 h-5" />
+        <FiMail className="w-4 h-4 sm:w-5 sm:h-5" />
       </motion.a>
       <motion.a
         whileHover={{ y: -3, scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        href="https://t.me/yourtelegram"
+        href="https://t.me/yquest"
         target="_blank"
         rel="noopener noreferrer"
-        className="p-2 dark:bg-gray-800 bg-gray-100 rounded-full text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400"
+        className="p-1.5 sm:p-2 dark:bg-gray-800 bg-gray-100 rounded-full text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400"
         aria-label="Telegram"
       >
-        <FaTelegram className="w-5 h-5" />
+        <FaTelegram className="w-4 h-4 sm:w-5 sm:h-5" />
       </motion.a>
       <motion.a
         whileHover={{ y: -3, scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        href="https://wa.me/yourwhatsapplink"
+        href="https://wa.me/251953136922"
         target="_blank"
         rel="noopener noreferrer"
-        className="p-2 dark:bg-gray-800 bg-gray-100 rounded-full text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400"
+        className="p-1.5 sm:p-2 dark:bg-gray-800 bg-gray-100 rounded-full text-gray-600 dark:text-gray-400 hover:text-green-500 dark:hover:text-green-400"
         aria-label="WhatsApp"
       >
-        <FaWhatsapp className="w-5 h-5" />
+        <FaWhatsapp className="w-4 h-4 sm:w-5 sm:h-5" />
       </motion.a>
     </>
   );
