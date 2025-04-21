@@ -51,7 +51,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact">
+    <section id="contact" className="py-12 md:py-20 px-4 sm:px-6 ">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -59,18 +59,18 @@ export default function ContactSection() {
         viewport={{ once: true }}
         className="max-w-2xl mx-auto"
       >
-        <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-center">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 text-center dark:text-white text-gray-900">
           Get In Touch
         </h2>
-        <p className="text-gray-400 text-sm sm:text-base mb-8 text-center">
+        <p className="dark:text-gray-400 text-gray-600 text-sm sm:text-base mb-6 sm:mb-8 text-center">
           Have a project in mind or want to discuss backend architecture?
         </p>
 
-        <div className="bg-gray-900 rounded-lg border border-gray-800 p-5 sm:p-8">
-          <form onSubmit={handleSubmit} className="space-y-5">
+        <div className="dark:bg-gray-900 bg-white rounded-lg dark:border-gray-800 border-gray-200 p-4 sm:p-6 shadow-sm">
+          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <FiUser className="text-gray-500 w-5 h-5" />
+                <FiUser className="dark:text-gray-500 text-gray-400 w-4 sm:w-5 h-4 sm:h-5" />
               </div>
               <input
                 type="text"
@@ -80,7 +80,7 @@ export default function ContactSection() {
                 onChange={(e) =>
                   setFormData({ ...formData, name: e.target.value })
                 }
-                className="w-full pl-10 pr-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-sm sm:text-base"
+                className="w-full pl-9 sm:pl-10 pr-3 sm:pr-4 py-2 sm:py-3 dark:bg-gray-800 bg-gray-50 dark:border-gray-700 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-sm sm:text-base dark:text-white text-gray-900"
                 placeholder="Your Name"
                 required
               />
@@ -88,7 +88,7 @@ export default function ContactSection() {
 
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <FiMail className="text-gray-500 w-5 h-5" />
+                <FiMail className="dark:text-gray-500 text-gray-400 w-4 sm:w-5 h-4 sm:h-5" />
               </div>
               <input
                 type="email"
@@ -98,41 +98,42 @@ export default function ContactSection() {
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
                 }
-                className="w-full pl-10 pr-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-sm sm:text-base"
+                className="w-full pl-9 sm:pl-10 pr-3 sm:pr-4 py-2 sm:py-3 dark:bg-gray-800 bg-gray-50 dark:border-gray-700 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-sm sm:text-base dark:text-white text-gray-900"
                 placeholder="your.email@example.com"
                 required
               />
             </div>
 
             <div className="relative">
-              <div className="absolute top-3 left-3">
-                <FiMessageSquare className="text-gray-500 w-5 h-5" />
+              <div className="absolute top-2 sm:top-3 left-3">
+                <FiMessageSquare className="dark:text-gray-500 text-gray-400 w-4 sm:w-5 h-4 sm:h-5" />
               </div>
               <textarea
                 id="message"
                 name="message"
-                rows={5}
+                rows={4}
                 value={formData.message}
                 onChange={(e) =>
                   setFormData({ ...formData, message: e.target.value })
                 }
-                className="w-full pl-10 pr-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-sm sm:text-base"
+                className="w-full pl-9 sm:pl-10 pr-3 sm:pr-4 py-2 sm:py-3 dark:bg-gray-800 bg-gray-50 dark:border-gray-700 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-sm sm:text-base dark:text-white text-gray-900"
                 placeholder="Your message..."
                 required
               ></textarea>
             </div>
 
-            <div className="pt-2">
+            <div className="pt-1 sm:pt-2">
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
+                className="flex items-center justify-center gap-2 w-full px-4 sm:px-6 py-2 sm:py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-medium text-white disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
               >
                 {isSubmitting ? (
                   "Sending..."
                 ) : (
                   <>
-                    <FiSend /> Send Message
+                    {" "}
+                    <FiSend className="w-4 h-4" /> Send Message{" "}
                   </>
                 )}
               </button>
@@ -143,7 +144,7 @@ export default function ContactSection() {
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="mt-4 p-3 bg-green-900/50 border border-green-700 rounded-lg text-green-300 text-sm"
+              className="mt-3 sm:mt-4 p-2 sm:p-3 dark:bg-green-900/50 bg-green-100 dark:border-green-700 border-green-300 rounded-lg dark:text-green-300 text-green-800 text-xs sm:text-sm"
             >
               Message sent successfully! I&apos;ll get back to you soon.
             </motion.div>
@@ -153,26 +154,26 @@ export default function ContactSection() {
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="mt-4 p-3 bg-red-900/50 border border-red-700 rounded-lg text-red-300 text-sm"
+              className="mt-3 sm:mt-4 p-2 sm:p-3 dark:bg-red-900/50 bg-red-100 dark:border-red-700 border-red-300 rounded-lg dark:text-red-300 text-red-800 text-xs sm:text-sm"
             >
               Failed to send message. Please try again or email me directly.
             </motion.div>
           )}
 
-          <div className="mt-8 pt-6 border-t border-gray-800">
-            <h3 className="text-lg sm:text-xl font-bold mb-4">
+          <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 dark:border-gray-800 border-gray-200">
+            <h3 className="text-base sm:text-lg md:text-xl font-bold mb-3 sm:mb-4 dark:text-white text-gray-900">
               Connect Directly
             </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
               {/* Email */}
               <a
                 href="mailto:yonaskemon01@gmail.com"
-                className="flex items-center gap-3 p-3 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors text-sm sm:text-base"
+                className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 dark:bg-gray-800 bg-gray-50 hover:dark:bg-gray-700 hover:bg-gray-100 rounded-lg transition-colors text-xs sm:text-sm"
               >
-                <span className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0">
-                  <FiMail className="w-5 h-5 text-blue-400" />
+                <span className="w-8 h-8 sm:w-10 sm:h-10 dark:bg-gray-700 bg-gray-200 rounded-full flex items-center justify-center flex-shrink-0">
+                  <FiMail className="w-3 h-3 sm:w-4 sm:h-4 text-blue-600 dark:text-blue-400" />
                 </span>
-                <span className="text-gray-300">Email</span>
+                <span className="dark:text-gray-300 text-gray-700">Email</span>
               </a>
 
               {/* Telegram */}
@@ -180,12 +181,14 @@ export default function ContactSection() {
                 href="https://t.me/yquest"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 p-3 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors text-sm sm:text-base"
+                className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 dark:bg-gray-800 bg-gray-50 hover:dark:bg-gray-700 hover:bg-gray-100 rounded-lg transition-colors text-xs sm:text-sm"
               >
-                <span className="w-10 h-10 bg-blue-500/10 rounded-full flex items-center justify-center flex-shrink-0">
-                  <FaTelegram className="w-5 h-5 text-blue-400" />
+                <span className="w-8 h-8 sm:w-10 sm:h-10 dark:bg-blue-500/10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <FaTelegram className="w-3 h-3 sm:w-4 sm:h-4 text-blue-600 dark:text-blue-400" />
                 </span>
-                <span className="text-gray-300">Telegram</span>
+                <span className="dark:text-gray-300 text-gray-700">
+                  Telegram
+                </span>
               </a>
 
               {/* WhatsApp */}
@@ -193,23 +196,27 @@ export default function ContactSection() {
                 href="https://wa.me/251953136922"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 p-3 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors text-sm sm:text-base"
+                className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 dark:bg-gray-800 bg-gray-50 hover:dark:bg-gray-700 hover:bg-gray-100 rounded-lg transition-colors text-xs sm:text-sm"
               >
-                <span className="w-10 h-10 bg-green-500/10 rounded-full flex items-center justify-center flex-shrink-0">
-                  <FaWhatsapp className="w-5 h-5 text-green-400" />
+                <span className="w-8 h-8 sm:w-10 sm:h-10 dark:bg-green-500/10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <FaWhatsapp className="w-3 h-3 sm:w-4 sm:h-4 text-green-600 dark:text-green-400" />
                 </span>
-                <span className="text-gray-300">WhatsApp</span>
+                <span className="dark:text-gray-300 text-gray-700">
+                  WhatsApp
+                </span>
               </a>
 
               {/* Phone */}
               <a
                 href="tel:+251953136922"
-                className="flex items-center gap-3 p-3 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors text-sm sm:text-base"
+                className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 dark:bg-gray-800 bg-gray-50 hover:dark:bg-gray-700 hover:bg-gray-100 rounded-lg transition-colors text-xs sm:text-sm"
               >
-                <span className="w-10 h-10 bg-purple-500/10 rounded-full flex items-center justify-center flex-shrink-0">
-                  <FiPhone className="w-5 h-5 text-purple-400" />
+                <span className="w-8 h-8 sm:w-10 sm:h-10 dark:bg-purple-500/10 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <FiPhone className="w-3 h-3 sm:w-4 sm:h-4 text-purple-600 dark:text-purple-400" />
                 </span>
-                <span className="text-gray-300">+251 953 136 922</span>
+                <span className="dark:text-gray-300 text-gray-700">
+                  +251 953 136 922
+                </span>
               </a>
             </div>
           </div>

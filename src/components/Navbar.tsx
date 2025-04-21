@@ -1,9 +1,9 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FiGithub, FiLinkedin, FiMail, FiMenu, FiX } from "react-icons/fi";
 import { FaTelegram, FaWhatsapp } from "react-icons/fa";
+import ThemeToggle from "@/context/ThemeToggle";
 
 const sections = [
   { id: "home", name: "Home" },
@@ -16,10 +16,12 @@ const sections = [
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState("home");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 100;
+      setScrolled(window.scrollY > 10);
 
       for (const section of sections) {
         const element = document.getElementById(section.id);
@@ -54,83 +56,102 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 dark:bg-gray-950/90 bg-white/90 backdrop-blur-md dark:border-b dark:border-gray-800 border-b border-gray-200 z-50">
-      <div className="container mx-auto px-4">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all ${
+        scrolled ? "bg-active-background/90" : "bg-active-background"
+      }  border-b border-border-color  backdrop-blur-md shadow-sm`}
+    >
+      <div className="container mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <button
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => scrollToSection("home")}
-            className="text-xl font-bold flex items-center focus:outline-none cursor-pointer dark:text-white text-gray-900"
+            className="text-lg sm:text-xl font-bold flex items-center focus:outline-none cursor-pointer dark:text-white text-gray-900"
           >
-            <span className="bg-blue-600 w-6 h-6 rounded-full mr-2"></span>
-            Yonas<span className="text-blue-400">.</span>
-          </button>
+            <span className="bg-blue-600 w-5 h-5 sm:w-6 sm:h-6 rounded-full mr-2 flex items-center justify-center">
+              <span className="w-2 h-2 bg-white rounded-full"></span>
+            </span>
+            Yonas<span className="text-blue-500">.</span>
+          </motion.button>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-6">
+          <div className="hidden lg:flex items-center gap-4 sm:gap-6">
             {sections.map((section) => (
-              <button
+              <motion.button
                 key={section.id}
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={() => scrollToSection(section.id)}
-                className={`relative px-1 py-2 text-sm transition-colors cursor-pointer ${
+                className={`relative px-1 py-2 text-sm font-medium cursor-pointer transition-colors duration-200 ${
                   activeSection === section.id
-                    ? "text-blue-400"
-                    : "dark:text-gray-400 text-gray-600 hover:dark:text-gray-200 hover:text-gray-900"
+                    ? "text-blue-600 dark:text-blue-400"
+                    : "dark:text-gray-400 text-gray-600 hover:text-gray-900 dark:hover:text-white"
                 } focus:outline-none`}
               >
                 {section.name}
                 {activeSection === section.id && (
                   <motion.span
                     layoutId="underline"
-                    className="absolute left-0 top-full block h-0.5 w-full bg-blue-500"
+                    className="absolute left-0 top-full block h-0.5 w-full bg-blue-500 dark:bg-blue-400"
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
                 )}
-              </button>
+              </motion.button>
             ))}
           </div>
 
-          <div className="flex items-center gap-4">
+          {/* Right side controls */}
+          <div className="flex items-center gap-3 sm:gap-4">
             {/* Social Icons (Desktop) */}
             <div className="hidden lg:flex items-center gap-2">
               <SocialMedias />
             </div>
+
+            {/* Theme Toggle */}
+            <ThemeToggle />
+
             {/* Mobile Menu Button */}
-            <button
-              className="lg:hidden p-2 dark:text-gray-400 text-gray-600 hover:dark:text-white hover:text-gray-900 focus:outline-none"
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="lg:hidden p-2 dark:text-gray-400 text-gray-600 hover:text-blue-500 dark:hover:text-blue-400 focus:outline-none"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
             >
-              {mobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
-            </button>
+              {mobileMenuOpen ? <FiX size={20} /> : <FiMenu size={20} />}
+            </motion.button>
           </div>
         </div>
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="lg:hidden py-4 dark:border-t dark:border-gray-800 border-t border-gray-200"
+            className="lg:hidden overflow-hidden"
           >
-            <div className="flex flex-col space-y-4">
+            <div className="flex flex-col space-y-2 py-4">
               {sections.map((section) => (
-                <button
+                <motion.button
                   key={section.id}
+                  whileHover={{ x: 4 }}
                   onClick={() => scrollToSection(section.id)}
-                  className={`px-4 py-2 rounded-lg transition-colors text-left cursor-pointer ${
+                  className={`px-4 py-3 rounded-lg text-left cursor-pointer transition-colors duration-200 ${
                     activeSection === section.id
-                      ? "dark:bg-blue-900/30 bg-blue-100 text-blue-400"
+                      ? "dark:bg-blue-900/30 bg-blue-100 text-blue-600 dark:text-blue-400 font-medium"
                       : "dark:text-gray-400 text-gray-600 hover:dark:bg-gray-800 hover:bg-gray-100"
                   } focus:outline-none`}
                 >
                   {section.name}
-                </button>
+                </motion.button>
               ))}
-            </div>
-            <div className="flex gap-4 mt-6 px-4">
-              <SocialMedias />
+              <div className="flex justify-center gap-3 pt-2 px-4">
+                <SocialMedias />
+              </div>
             </div>
           </motion.div>
         )}
@@ -142,49 +163,59 @@ export default function Navbar() {
 const SocialMedias = () => {
   return (
     <>
-      <a
+      <motion.a
+        whileHover={{ y: -3, scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
         href="https://github.com/yourusername"
         target="_blank"
         rel="noopener noreferrer"
-        className="p-2 dark:text-gray-400 text-gray-600 hover:text-blue-400 transition-colors"
+        className="p-2 dark:bg-gray-800 bg-gray-100 rounded-full text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400"
         aria-label="GitHub"
       >
         <FiGithub className="w-5 h-5" />
-      </a>
-      <a
+      </motion.a>
+      <motion.a
+        whileHover={{ y: -3, scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
         href="https://linkedin.com/in/yonas-kemon"
         target="_blank"
         rel="noopener noreferrer"
-        className="p-2 dark:text-gray-400 text-gray-600 hover:text-blue-400 transition-colors"
+        className="p-2 dark:bg-gray-800 bg-gray-100 rounded-full text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400"
         aria-label="LinkedIn"
       >
         <FiLinkedin className="w-5 h-5" />
-      </a>
-      <a
-        href="mailto:yonaskemon01@gmail.com"
-        className="p-2 dark:text-gray-400 text-gray-600 hover:text-blue-400 transition-colors"
+      </motion.a>
+      <motion.a
+        whileHover={{ y: -3, scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        href="mailto:you@example.com"
+        className="p-2 dark:bg-gray-800 bg-gray-100 rounded-full text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400"
         aria-label="Email"
       >
         <FiMail className="w-5 h-5" />
-      </a>
-      <a
-        href="https://t.me/yquest"
+      </motion.a>
+      <motion.a
+        whileHover={{ y: -3, scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        href="https://t.me/yourtelegram"
         target="_blank"
         rel="noopener noreferrer"
-        className="p-2 dark:text-gray-400 text-gray-600 hover:text-blue-400 transition-colors"
+        className="p-2 dark:bg-gray-800 bg-gray-100 rounded-full text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400"
         aria-label="Telegram"
       >
         <FaTelegram className="w-5 h-5" />
-      </a>
-      <a
-        href="https://wa.me/251953136922"
+      </motion.a>
+      <motion.a
+        whileHover={{ y: -3, scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        href="https://wa.me/yourwhatsapplink"
         target="_blank"
         rel="noopener noreferrer"
-        className="p-2 dark:text-gray-400 text-gray-600 hover:text-green-400 transition-colors"
+        className="p-2 dark:bg-gray-800 bg-gray-100 rounded-full text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400"
         aria-label="WhatsApp"
       >
         <FaWhatsapp className="w-5 h-5" />
-      </a>
+      </motion.a>
     </>
   );
 };

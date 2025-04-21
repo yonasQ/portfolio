@@ -1,49 +1,36 @@
-/* @tailwind base; */
-@import "tailwindcss/preflight";
-@import "tailwindcss/utilities";
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
-/* Custom styles */
 @layer base {
-  body {
-    @apply antialiased;
-  }
-  
-  /* Smooth scrolling */
-  html {
-    scroll-behavior: smooth;
-  }
-  
-  /* Selection color */
-  ::selection {
-    @apply bg-blue-900 text-white;
-  }
-  
-  /* Scrollbar styling */
-  ::-webkit-scrollbar {
-    @apply w-2;
-  }
-  
-  ::-webkit-scrollbar-track {
-    @apply bg-gray-900;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    @apply bg-gray-700 rounded-full hover:bg-gray-600;
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--border-color, currentColor);
+    transition: background-color 0.2s ease, border-color 0.2s ease;
   }
 }
 
-/* Animation classes */
-@layer utilities {
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
+@theme {
+  --color-active-background: var(--background);
+  --color-icon-background: var(--icon-background);
+  --color-icon-text-color: var(--icon-text-color);
+  --color-border-color: var(--border-color);
+}
+
+@layer base {
+  :root {
+    --background: var(--color-gray-100);
+    --icon-background: var(--color-gray-100);
+    --icon-text-color: var(--color-gray-700);
+    --border-color: var(--color-gray-200);
   }
-  
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
+
+  .dark {
+    --background: var(--color-gray-950);
+    --icon-background: var(--color-gray-800);
+    --icon-text-color: var(--color-gray-300);
+    --border-color: var(--color-gray-800);
   }
 }

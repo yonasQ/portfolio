@@ -1,5 +1,4 @@
 "use client";
-
 import { motion } from "framer-motion";
 import { IconType } from "react-icons";
 
@@ -23,21 +22,25 @@ export default function SkillCategory({
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      viewport={{ once: true }}
-      className="bg-gray-900/80 backdrop-blur-sm border border-gray-800 rounded-xl p-6 hover:border-gray-700 transition-all"
+      viewport={{ once: true, margin: "0px 0px -50px 0px" }}
+      className="dark:bg-gray-900/80 bg-white/80 backdrop-blur-sm dark:border-gray-800 border-gray-200 rounded-xl p-4 sm:p-5 hover:dark:border-gray-700 hover:border-gray-300 transition-all shadow-sm"
     >
-      <div className="flex items-center gap-3 mb-4">
-        <div className="w-10 h-10 bg-blue-900/20 rounded-lg flex items-center justify-center text-blue-400">
-          <Icon className="w-5 h-5" />
+      <div className="flex items-center gap-3 mb-3 sm:mb-4">
+        <div className="w-8 h-8 sm:w-10 sm:h-10 dark:bg-blue-900/20 bg-blue-100/50 rounded-lg flex items-center justify-center text-blue-600 dark:text-blue-400">
+          <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
         </div>
-        <h3 className="text-xl font-bold">{category.name}</h3>
+        <h3 className="text-base sm:text-lg font-bold dark:text-white text-gray-900">
+          {category.name}
+        </h3>
       </div>
 
-      <ul className="space-y-3">
+      <ul className="space-y-2 sm:space-y-3">
         {category.items.map((skill, i) => (
           <li key={i} className="flex items-center">
-            <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-            <span className="text-gray-300">{skill}</span>
+            <div className="w-2 h-2 bg-blue-600 dark:bg-blue-500 rounded-full mr-2 sm:mr-3"></div>
+            <span className="dark:text-gray-300 text-gray-700 text-xs sm:text-sm">
+              {skill}
+            </span>
           </li>
         ))}
       </ul>

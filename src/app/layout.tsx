@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
-import "./globals.css";
+import "../styles/globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { ThemeProvider } from "./Providers";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -28,15 +29,19 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${spaceGrotesk.variable} text-gray-900`}
+        className={`${inter.variable} ${spaceGrotesk.variable} text-gray-900 bg-white dark:bg-gray-900 dark:text-gray-100`}
       >
-        <Navbar />
-        <div>
-          <main className="container mx-auto px-4 py-20 lg:py-0">
-            {children}
-          </main>
-        </div>
-        <Footer />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark" // Default theme if no preference exists
+          enableSystem={false} // Disable system preference
+          storageKey="theme" // Unique key for your app
+          enableColorScheme={false} // Disable color-scheme CSS property
+        >
+          <Navbar />
+          {children}
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
