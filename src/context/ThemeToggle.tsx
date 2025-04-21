@@ -11,11 +11,14 @@ export default function ThemeToggle() {
 
   useEffect(() => {
     setMounted(true);
-    // Force override any system preference on first load
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-      setTheme(savedTheme);
-    }
+    const savedTheme =
+      localStorage.getItem("theme") === "dark" ||
+      (!localStorage.getItem("theme") &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ? "dark"
+        : "light";
+
+    setTheme(savedTheme);
   }, [setTheme]);
 
   if (!mounted) {
